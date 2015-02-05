@@ -53,6 +53,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/vti/plack-app-eventsource/issues"
+      },
+      "homepage" : "https://github.com/vti/plack-app-eventsource",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/vti/plack-app-eventsource.git",
+         "web" : "https://github.com/vti/plack-app-eventsource"
+      }
+   },
    "version" : "0.01",
    "x_authority" : "cpan:VTI"
 }

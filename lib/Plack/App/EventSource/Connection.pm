@@ -54,11 +54,11 @@ Creates new object.
 
 =head2 C<close>
 
-Closes connections.
+Closes connection.
 
 =head2 C<push>
 
-Pushes data to the client. Accepts and array of messages, which themselves can
+Pushes data to the client. Accepts an array of messages, which themselves can
 be strings or hash references.
 
     $conn->push('message');
