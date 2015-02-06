@@ -29,7 +29,16 @@ Plack::App::EventSource - EventSource/SSE for Plack
 Plack::App::EventSource is an EventSource or Server Side Events applications.
 EventSource is an alternative to WebSockets when there is no need for duplex
 communication. EventSource uses HTTP and is much simpler in implementation.
-Ideal for website notifications or read only streams.
+Ideal for website notifications or read only update streams.
+
+It is recommended to use EventSource with polyfills to enable them in browsers
+that don't support SSE. This does not need any server changes, which is very
+handy. Take a look at
+[EventSource.js](https://github.com/remy/polyfills/blob/master/EventSource.js)
+and [jquery.eventsource](https://github.com/rwaldron/jquery.eventsource).
+
+This library stays event loop agnostic, which means that you can use it with
+[AnyEvent](https://metacpan.org/pod/AnyEvent) or [POE](https://metacpan.org/pod/POE) or even just with a plain forking server.
 
 ## Options
 
