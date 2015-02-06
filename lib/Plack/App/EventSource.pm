@@ -7,7 +7,7 @@ use parent 'Plack::Component';
 
 our $VERSION = "0.01";
 
-use Plack::Util::Accessor qw(handler_cb);
+use Plack::Util::Accessor qw(handler_cb headers);
 use Plack::App::EventSource::Connection;
 
 sub call {
@@ -26,7 +26,9 @@ sub call {
                 [
                     'Content-Type' => 'text/event-stream; charset=UTF-8',
                     'Cache-Control' =>
-                      'no-store, no-cache, must-revalidate, max-age=0'
+                      'no-store, no-cache, must-revalidate, max-age=0',
+                    'Access-Control-Allow-Methods' => 'GET',
+                    @{$self->headers || []}
                 ]
             ]
         );
@@ -37,8 +39,11 @@ sub call {
 
                 foreach my $message (@messages) {
                     if (ref $message eq 'HASH') {
-                        $writer->write(join "\x0d\x0a",
-                            "id: $message->{id}", "data: $message->{data}", '');
+                        $writer->write(
+                            join "\x0d\x0a",
+                            "id: $message->{id}",
+                            "data: $message->{data}", ''
+                        );
                     }
                     else {
                         $writer->write("data: $message\x0d\x0a");
@@ -119,6 +124,16 @@ L<Plack::App::EventSource::Connection> and C<$env> parameters.
         $conn->push('hi');
         $conn->close;
     }
+
+=item C<headers>
+
+Additional response headers. With is useful when you want to add Access Control
+headers:
+
+    headers => [
+        'Access-Control-Allow-Origin' : 'http://localhost:5000',
+        'Access-Control-Allow-Credentials' : 'true'
+    ]
 
 =back
 

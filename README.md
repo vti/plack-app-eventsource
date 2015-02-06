@@ -54,6 +54,16 @@ This library stays event loop agnostic, which means that you can use it with
             $conn->close;
         }
 
+- `headers`
+
+    Additional response headers. With is useful when you want to add Access Control
+    headers:
+
+        headers => [
+            'Access-Control-Allow-Origin' : 'http://localhost:5000',
+            'Access-Control-Allow-Credentials' : 'true'
+        ]
+
 # ISA
 
 [Plack::Component](https://metacpan.org/pod/Plack::Component)
