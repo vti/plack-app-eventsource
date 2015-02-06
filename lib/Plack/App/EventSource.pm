@@ -158,6 +158,18 @@ option:
         withCredentials: true
     });
 
+=head2 Nginx proxy
+
+    location /events {
+            proxy_pass http://backend;
+            proxy_buffering off;
+            proxy_cache off;
+            proxy_set_header Host $host;
+            proxy_set_header Connection '';
+            proxy_http_version 1.1;
+            chunked_transfer_encoding off;
+    }
+
 =head1 ISA
 
 L<Plack::Component>
