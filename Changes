@@ -2,5 +2,7 @@ Revision history for Perl extension Plack-App-EventSource
 
 {{$NEXT}}
 
+0.01 2015-02-06T11:14:04Z
+
     - original version
 
