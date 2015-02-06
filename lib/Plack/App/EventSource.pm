@@ -127,7 +127,7 @@ L<Plack::App::EventSource::Connection> and C<$env> parameters.
 
 =item C<headers>
 
-Additional response headers. With is useful when you want to add Access Control
+Additional response headers. This is useful when you want to add Access Control
 headers:
 
     headers => [

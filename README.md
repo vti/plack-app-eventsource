@@ -56,7 +56,7 @@ This library stays event loop agnostic, which means that you can use it with
 
 - `headers`
 
-    Additional response headers. With is useful when you want to add Access Control
+    Additional response headers. This is useful when you want to add Access Control
     headers:
 
         headers => [
