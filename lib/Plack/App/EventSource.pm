@@ -90,7 +90,7 @@ Plack::App::EventSource - EventSource/SSE for Plack
 
 =head1 DESCRIPTION
 
-Plack::App::EventSource is an EventSource or Server Side Events applications.
+Plack::App::EventSource is an EventSource or Server Sent Events applications.
 EventSource is an alternative to WebSockets when there is no need for duplex
 communication. EventSource uses HTTP and is much simpler in implementation.
 Ideal for website notifications or read only update streams.
