@@ -64,6 +64,27 @@ This library stays event loop agnostic, which means that you can use it with
             'Access-Control-Allow-Credentials' : 'true'
         ]
 
+# HOWTOs
+
+## Sending cookies to another domain
+
+Set CORS headers:
+
+    headers => [
+        'Access-Control-Allow-Origin' : 'http://original-domain',
+        'Access-Control-Allow-Credentials' : 'true'
+    ]
+
+If you try to set `Origin` to `*` some browsers will complain. So make sure to
+set the correct original domain.
+
+When connecting to EventSource on the client side pass `withCredentials`
+option:
+
+    var es = new EventSource("http://another-domain", {
+        withCredentials: true
+    });
+
 # ISA
 
 [Plack::Component](https://metacpan.org/pod/Plack::Component)

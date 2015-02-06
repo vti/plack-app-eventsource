@@ -137,6 +137,27 @@ headers:
 
 =back
 
+=head1 HOWTOs
+
+=head2 Sending cookies to another domain
+
+Set CORS headers:
+
+    headers => [
+        'Access-Control-Allow-Origin' : 'http://original-domain',
+        'Access-Control-Allow-Credentials' : 'true'
+    ]
+
+If you try to set C<Origin> to C<*> some browsers will complain. So make sure to
+set the correct original domain.
+
+When connecting to EventSource on the client side pass C<withCredentials>
+option:
+
+    var es = new EventSource("http://another-domain", {
+        withCredentials: true
+    });
+
 =head1 ISA
 
 L<Plack::Component>
