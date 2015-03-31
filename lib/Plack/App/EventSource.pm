@@ -37,16 +37,16 @@ sub call {
             push_cb => sub {
                 my (@messages) = @_;
 
-                foreach my $message (@messages) {
-                    if (ref $message eq 'HASH') {
-                        $writer->write(
-                            join "\x0d\x0a",
-                            "id: $message->{id}",
-                            "data: $message->{data}", ''
-                        );
+                foreach my $msg (@messages) {
+                    if (ref $msg eq 'HASH') {
+                        my $event = join "\x0d\x0a",
+                            map { "$_: ".$msg->{$_} }
+                            grep { defined $msg->{$_} }
+                            qw(event id data retry);
+                         $writer->write("$event\x0d\x0a");
                     }
                     else {
-                        $writer->write("data: $message\x0d\x0a");
+                        $writer->write("data: $msg\x0d\x0a");
                     }
                 }
 

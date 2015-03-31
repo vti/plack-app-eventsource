@@ -65,6 +65,8 @@ be strings or hash references.
     $conn->push('multi', 'line', 'message');
     $conn->push({id => 1, data => 'message with id'});
 
+possible hash fields are C<event>, C<id>, C<data>, and C<retry>.
+
 =head1 AUTHOR
 
 Viacheslav Tykhanovskyi, E<lt>viacheslav.t@gmail.comE<gt>
