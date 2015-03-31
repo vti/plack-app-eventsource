@@ -96,18 +96,16 @@ Plack::App::EventSource - EventSource/SSE for Plack
 =head1 DESCRIPTION
 
 Plack::App::EventSource is an EventSource or Server Sent Events applications.
-EventSource is an alternative to WebSockets when there is no need for duplex
-communication. EventSource uses HTTP and is much simpler in implementation.
-Ideal for website notifications or read only update streams.
-
-It is recommended to use EventSource with polyfills to enable them in browsers
-that don't support SSE. This does not need any server changes, which is very
-handy. Take a look at
-L<EventSource.js|https://github.com/remy/polyfills/blob/master/EventSource.js>
-and L<jquery.eventsource|https://github.com/rwaldron/jquery.eventsource>.
+L<EventSource|http://www.w3.org/TR/eventsource/> is an alternative to
+WebSockets when there is no need for duplex communication. EventSource uses
+HTTP and is much simpler in implementation.  Ideal for website notifications or
+read only update streams.
 
 This library stays event loop agnostic, which means that you can use it with
 L<AnyEvent> or L<POE> or even just with a plain forking server.
+
+Plack::App::Eventsource is a subclass of L<Plack::Component>, inheriting all
+its methods. You should only have to know about the C<to_app> method.
 
 =head2 Options
 
@@ -116,7 +114,7 @@ L<AnyEvent> or L<POE> or even just with a plain forking server.
 =item C<handler_cb>
 
 The main application entry point. It is called with
-L<Plack::App::EventSource::Connection> and C<$env> parameters.
+L<Plack::App::EventSource::Connection> and L<PSGI> C<$env> parameters.
 
     handler_cb => sub {
         my ($conn, $env) = @_;
@@ -138,6 +136,14 @@ headers:
 =back
 
 =head1 HOWTOs
+
+=head2 client support
+
+It is recommended to use EventSource with polyfills to enable them in browsers
+that don't support SSE. This does not need any server changes, which is very
+handy. Take a look at
+L<EventSource.js|https://github.com/remy/polyfills/blob/master/EventSource.js>
+and L<jquery.eventsource|https://github.com/rwaldron/jquery.eventsource>.
 
 =head2 Sending cookies to another domain
 
@@ -170,35 +176,13 @@ option:
             chunked_transfer_encoding off;
     }
 
-=head1 ISA
-
-L<Plack::Component>
-
-=head1 METHODS
-
-=head2 C<call($env)>
-
-=head1 INHERITED METHODS
-
-=head2 C<new>
-
-=head2 C<mk_accessors>
-
-=head2 C<prepare_app>
-
-=head2 C<response_cb($res, $cb)>
-
-=head2 C<to_app>
-
-=head2 C<to_app_auto>
-
 =head1 AUTHOR
 
 Viacheslav Tykhanovskyi, E<lt>viacheslav.t@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2015, Viacheslav Tykhanovskyi
+Copyright (C) 2015-, Viacheslav Tykhanovskyi
 
 This program is free software, you can redistribute it and/or modify it under
 the terms of the Artistic License version 2.0.
