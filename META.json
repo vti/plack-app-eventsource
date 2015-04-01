@@ -64,6 +64,9 @@
          "web" : "https://github.com/vti/plack-app-eventsource"
       }
    },
-   "version" : "0.01",
-   "x_authority" : "cpan:VTI"
+   "version" : "0.02",
+   "x_authority" : "cpan:VTI",
+   "x_contributors" : [
+      "Jakob Voss <voss@gbv.de>"
+   ]
 }
