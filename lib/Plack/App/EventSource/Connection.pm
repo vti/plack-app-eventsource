@@ -40,7 +40,7 @@ Plack::App::EventSource::Connection - Connection object
 
 =head1 SYNOPSIS
 
-Used internally.
+Used internally by L<Plack::App::EventSource>.
 
 =head1 DESCRIPTION
 
@@ -65,13 +65,15 @@ be strings or hash references.
     $conn->push('multi', 'line', 'message');
     $conn->push({id => 1, data => 'message with id'});
 
+possible hash fields are C<event>, C<id>, C<data>, and C<retry>.
+
 =head1 AUTHOR
 
 Viacheslav Tykhanovskyi, E<lt>viacheslav.t@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2015, Viacheslav Tykhanovskyi
+Copyright (C) 2015-, Viacheslav Tykhanovskyi
 
 This program is free software, you can redistribute it and/or modify it under
 the terms of the Artistic License version 2.0.
