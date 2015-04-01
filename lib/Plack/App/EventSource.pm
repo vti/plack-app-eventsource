@@ -137,7 +137,7 @@ headers:
 
 =head1 HOWTOs
 
-=head2 client support
+=head2 Client support
 
 It is recommended to use EventSource with polyfills to enable them in browsers
 that don't support SSE. This does not need any server changes, which is very
@@ -175,6 +175,10 @@ option:
             proxy_http_version 1.1;
             chunked_transfer_encoding off;
     }
+
+=head1 CREDITS
+
+Jakob Voss (nichtich)
 
 =head1 AUTHOR
 
