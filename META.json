@@ -4,7 +4,7 @@
       "Viacheslav Tykhanovskyi, <viacheslav.t@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.3.0, CPAN::Meta::Converter version 2.142690",
+   "generated_by" : "Minilla/v3.0.4, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "artistic_2"
    ],
@@ -64,9 +64,10 @@
          "web" : "https://github.com/vti/plack-app-eventsource"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_authority" : "cpan:VTI",
    "x_contributors" : [
       "Jakob Voss <voss@gbv.de>"
-   ]
+   ],
+   "x_serialization_backend" : "JSON::PP version 2.27300_01"
 }

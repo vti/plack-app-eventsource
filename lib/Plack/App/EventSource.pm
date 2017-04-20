@@ -5,7 +5,7 @@ use warnings;
 
 use parent 'Plack::Component';
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 use Plack::Util::Accessor qw(handler_cb headers);
 use Plack::App::EventSource::Connection;
