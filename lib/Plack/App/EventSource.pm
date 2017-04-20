@@ -33,7 +33,7 @@ sub call {
             ]
         );
 
-        my $connection = Plack::App::EventSource::Connection->new(
+        my $connection; $connection = Plack::App::EventSource::Connection->new(
             push_cb => sub {
                 my (@messages) = @_;
 
@@ -43,17 +43,20 @@ sub call {
                             map { "$_: ".$msg->{$_} }
                             grep { defined $msg->{$_} }
                             qw(event id data retry);
-                         $writer->write("$event\x0d\x0a");
+                        eval { $writer->write("$event\x0d\x0a"); 1 }
+                          or do { $connection->close; return };
                     }
                     else {
-                        $writer->write("data: $msg\x0d\x0a");
+                        eval { $writer->write("data: $msg\x0d\x0a"); 1 } or do { $connection->close; return };
                     }
                 }
 
-                $writer->write("\x0d\x0a");
+                eval { $writer->write("\x0d\x0a"); 1 } or do {
+                    $connection->close;
+                };
             },
             close_cb => sub {
-                $writer->close;
+                eval { $writer->close };
             }
         );
 
